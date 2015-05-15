@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name ="viewport" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="/src/play/index.less">
+    <title>开始玩吧</title>
+</head>
+<body>
+    <div class="main">
+        <div id="turn-table"></div>
+    </div>
+    <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
+    <script>
+        require.config({
+            'baseUrl': '/src'
+        });
+        require(['play/index'], function (index) {
+            index.init();
+        });
+    </script>
+</body>
+</html>
