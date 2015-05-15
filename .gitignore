@@ -1,0 +1,5 @@
+node_modules/
+templates_c/
+output
+.DS_Store
+*.log
