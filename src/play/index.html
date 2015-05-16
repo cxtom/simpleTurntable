@@ -11,14 +11,27 @@
 </head>
 <body>
     <div class="main">
-        <div class="turn-table">
-            <canvas id="play"></canvas>
+        <div id="turn-table">
+
         </div>
     </div>
     <script src="http://s1.bdstatic.com/r/www/cache/ecom/esl/2-0-6/esl.js"></script>
     <script>
         require.config({
-            'baseUrl': '/src'
+            'baseUrl': '../../src',
+            'paths': {},
+            'packages': [
+                {
+                    'name': 'est',
+                    'location': '../dep/est/2.0.0/src',
+                    'main': 'lib/index'
+                },
+                {
+                    'name': 'zrender',
+                    'location': '../dep/zrender/2.0.8/src',
+                    'main': 'zrender'
+                }
+            ]
         });
         require(['play/index'], function (index) {
             index.init();

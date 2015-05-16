@@ -13,7 +13,8 @@
         "loaderAutoConfig": "js,htm,html,tpl,vm,phtml",
         "loaderUrl": "http://s1.bdstatic.com/r/www/cache/ecom/esl/1-8-2/esl.js",
         "dependencies": {
-            "est": "~2.0.0"
+            "est": "~2.0.0",
+            "zrender": "~2.0.8"
         }
     },
     "dependencies": {},

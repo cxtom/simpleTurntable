@@ -1,11 +1,15 @@
 @import "../../dep/est/2.0.0/src/all.less";
 
- .global-normalize();
-
- body {
-    width: 100%;
+ html,
+ body,
+ .main {
+    .size(100%);
+    margin: 0;
+    padding: 0;
  }
 
  .main {
-    width: 100%;
+    #turn-table {
+        .size(100%);
+    }
  }
