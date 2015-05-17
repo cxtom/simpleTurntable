@@ -17,7 +17,7 @@ define(function (require) {
                           "精品棉袜", "抽纸", "洗衣液", "保暖内衣",
                           "食用油", "IPONE5"];
             var perAng = 2 * Math.PI / awards.length;
-
+            var origin = 0;
             zr.addShape(new ImageShape({
                 style: {
                     x: 0,
@@ -38,31 +38,42 @@ define(function (require) {
                 },
                 rotation: [0, (33 + 479/2) * scale, (200 + 479/2) * scale]
             });
-
             zr.addShape(turn);
+            zr.addShape(new ImageShape({
+                style: {
+                    x: 216 * scale,
+                    y: 307 * scale,
+                    image: './img/arrow.png',
+                    width: 112 * scale,
+                    height: 188 * scale
+                },
+                clickable: true,
+                onclick: function () {
+                    var Dreg = Math.PI * 8 + Math.random() * Math.PI * 3;
+                    origin += Dreg;
+
+                    zr
+                        .animate(turn.id)
+                        .when(5000, {
+                            rotation : [
+                                origin,
+                                turn.rotation[1],
+                                turn.rotation[2]]
+                        })
+                        .done(function () {
+                            var result = Math.floor((origin % (2 * Math.PI)) / perAng);
+                            result = (result + 1) % awards.length;;
+                            if (0 === result) {
+                                alert('谢谢参与');
+                            }
+                            else {
+                                alert('恭喜你得到了' + awards[result] + '！');
+                            }
+                        })
+                        .start('QuarticOut');
+                }
+            }));
             zr.render();
-
-            var Dreg = Math.PI * 12 + Math.random() * Math.PI * 4;
-
-            zr
-                .animate(turn.id)
-                .when(7000, {
-                    rotation : [
-                        Dreg,
-                        turn.rotation[1],
-                        turn.rotation[2]]
-                })
-                .done(function () {
-                    var result = Math.floor((Dreg % (2 * Math.PI)) / perAng);
-                    result = (result + 1) % awards.length;;
-                    if ('' === result) {
-                        alert('谢谢参与');
-                    }
-                    else {
-                        alert('恭喜你得到了' + awards[result] + '！');
-                    }
-                })
-                .start('QuarticOut');
         }
     };
 });
