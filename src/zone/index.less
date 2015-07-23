@@ -3,18 +3,44 @@
 .global-normalize();
 
 html,
-body,
-.main {
+body {
     .size(100%);
     margin: 0;
     padding: 0;
-    background-color: #ffdd82;
 }
 
-.main {
-    #turn-table {
-        .size(90%);
-        margin: auto;
-        margin-top: 10%
+@media screen and (max-width: 500px) {
+    body {
+        background-color: #ffdd82;
+    }
+    .main {
+        .size(100%);
+        margin: 0;
+        padding: 0;
+        background-color: #ffdd82;
+    }
+    .main {
+        #turn-table {
+            .size(90%);
+            margin: auto;
+            margin-top: 10%;
+        }
+    }
+}
+
+@media screen and (min-width: 500px) {
+    .main {
+        .size(600px, 100%);
+        margin: 0 auto;
+        padding: 0;
+        background-color: #ffdd82;
+    }
+
+    .main {
+        padding-top: 10%;
+        #turn-table {
+            .size(450px, 450px);
+            margin: auto;
+        }
     }
 }

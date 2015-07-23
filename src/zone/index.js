@@ -1,9 +1,12 @@
+/**
+ * @file 转盘2
+ * @author cxtom (cxtom2008@gmail.com)
+ */
+
 define(function (require) {
 
     var zrender     = require('zrender');
-    var guid        = require('zrender/tool/guid');
     var ImageShape  = require('zrender/shape/Image');
-    var Animation   = require('zrender/animation/animation');
     var zr          = zrender.init(document.getElementById('turn-table'));
 
     return {
@@ -11,12 +14,11 @@ define(function (require) {
             zr.clear();
 
             var width = zr.getWidth();
-            var height = width;
             var scale = width / 450;
-            var awards = ["360经验值", "100M空间", "36经验值", "360MB空间",
-                          "100经验值", "36MB空间", "100G永久免费空间"];
+            var awards = ['360经验值', '100M空间', '36经验值', '360MB空间', '100经验值', '36MB空间', '100G永久免费空间'];
             var perAng = 2 * Math.PI / awards.length;
             var origin = 0;
+
 
             zr.addShape(new ImageShape({
                 style: {
@@ -63,14 +65,14 @@ define(function (require) {
                     zr
                         .animate(turn.id)
                         .when(5000, {
-                            rotation : [
+                            rotation: [
                                 origin,
                                 turn.rotation[1],
                                 turn.rotation[2]]
                         })
                         .done(function () {
                             var result = Math.floor((origin % (2 * Math.PI)) / perAng);
-                            result = result % awards.length;;
+                            result = result % awards.length;
                             alert('恭喜你得到了' + awards[result] + '！');
                         })
                         .start('QuarticOut');
